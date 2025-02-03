@@ -1,0 +1,38 @@
+#########  MÉDIDAS DAX  #########
+
+ 
+######### Total de Contratações ########
+CONTRATACOES = DISTINCTCOUNT(registros[cpf_func])
+##############   FIM   ###############
+
+
+######### Funcionários Ativos ##########
+FUNC. ATIVOS = CALCULATE(
+              DISTINCTCOUNT(registros[cpf_func]),
+                             ISBLANK(registros[data_demissao])
+                             )
+#############  FIM  ###################
+
+
+######### Funcionário Inativos ##########
+FUNC. INATIVOS = CALCULATE(
+              DISTINCTCOUNT(registros[cpf_func]),
+                             NOT(ISBLANK(registros[data_demissao])
+                             ))
+###########   FIM    ##################
+
+
+######### Func. Ativos - Masculino ########
+FUNC. MASCULINO = CALCULATE(
+                         [FUNC. ATIVOS],
+                         registros[genero_func] IN {"Masculino","M"}
+                         )
+############  FIM   ###################
+
+
+######## Func. Ativos - Feminino ##########
+FUNC. FEMININO = CALCULATE(
+                         [FUNC. ATIVOS],
+                         registros[genero_func] IN {"Feminino","F"}
+                         )
+############  FIM   ####################
