@@ -36,3 +36,14 @@ FUNC. FEMININO = CALCULATE(
                          registros[genero_func] IN {"Feminino","F"}
                          )
 ############  FIM   ####################
+
+####### ABSENTEISMO ##########
+ABSENTEISMO = DIVIDE(SUM(registros[horas_faltantes]), SUM(registros[horas_trabalhadas]))
+#######  FIM #########
+
+####### TURNOVER #########
+TURNOVER = (([CONTRATACOES] + [FUNC. INATIVOS])/2)/[FUNC. ATIVOS]
+##########################
+
+
+
